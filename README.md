@@ -1,4 +1,4 @@
-project-euler
+Project Euler
 =============
 
-My solutions to Project Euler problems
+These are my solutions to Project Euler problems.
