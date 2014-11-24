@@ -7,19 +7,20 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 """
 import sys
 
-from ..utilities import execute_and_time
+from ..utilities import timed_execution
 
 
 def sum_multiples(ceiling, *factors):
-    """Find the sum of all multiples below the ceiling of the provided factors."""
+    """Find the sum of all multiples of the provided factors below the ceiling."""
     multiples = []
 
     for number in xrange(ceiling):
         for factor in factors:
+            # Check if the current number is a multiple of the current factor.
             if number % factor is 0:
                 multiples.append(number)
 
-    # Convert the list of multiples to a set to eliminate duplicates
+    # Eliminate duplicate multiples by converting the list of multiples to a set.
     multiple_sum = sum(set(multiples))
     
     return multiple_sum
@@ -28,4 +29,4 @@ def sum_multiples(ceiling, *factors):
 ceiling = int(sys.argv[1])
 factors = [int(factor) for factor in sys.argv[2:]]
 
-execute_and_time.execute_and_time(sum_multiples, ceiling, *factors)
+timed_execution.timed_execution(sum_multiples, ceiling, *factors)
