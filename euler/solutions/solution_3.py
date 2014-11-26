@@ -41,12 +41,12 @@ def largest_prime_factor(number):
 
     for prime in primes:
         # Check if the current prime is a factor of the given number.
-        while number % prime is 0:
-            # Divide number by current prime
+        while number % prime == 0:
+            # Divide number by current prime.
             number /= prime
 
         # Check if we've just divided by the largest prime.
-        if number is 1:
+        if number == 1:
             return prime
 
 
@@ -59,12 +59,12 @@ def largest_prime_factor_improved(number):
         # prime, only primes will be able to successfully factor the
         # given number. This means we don't need to generate a huge
         # array in which to store primality flags.
-        while number % candidate is 0:
-            # Divide number by current prime
+        while number % candidate == 0:
+            # Divide number by current prime.
             number /= candidate
 
         # Check if we've just divided by the largest prime.
-        if number is 1:
+        if number == 1:
             return candidate
 
 

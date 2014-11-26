@@ -17,7 +17,7 @@ def sum_multiples(ceiling, *factors):
     for number in xrange(ceiling):
         for factor in factors:
             # Check if the current number is a multiple of the current factor.
-            if number % factor is 0:
+            if number % factor == 0:
                 multiples.append(number)
 
     # Eliminate duplicate multiples by converting the list of multiples to a set.

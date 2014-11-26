@@ -25,7 +25,7 @@ def sum_even_fibonaccis(limit):
         previous, current = current, previous + current
 
         # Check if the current term in the sequence is even.
-        if current % 2 is 0:
+        if current % 2 == 0:
             even_fibonacci_sum += current
 
     return even_fibonacci_sum
