@@ -26,7 +26,8 @@ def sum_multiples(ceiling, *factors):
     return multiple_sum
 
 
-ceiling = int(sys.argv[1])
-factors = [int(factor) for factor in sys.argv[2:]]
+if __name__ == '__main__':
+    ceiling = int(sys.argv[1])
+    factors = [int(factor) for factor in sys.argv[2:]]
 
-timed_execution.timed_execution(sum_multiples, ceiling, *factors)
+    timed_execution.timed_execution(sum_multiples, ceiling, *factors)

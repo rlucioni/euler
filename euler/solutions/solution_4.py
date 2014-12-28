@@ -33,6 +33,7 @@ def largest_palindromic_product(digits):
     return palindrome_product
 
 
-digits = int(sys.argv[1])
+if __name__ == '__main__':
+    digits = int(sys.argv[1])
 
-timed_execution.timed_execution(largest_palindromic_product, digits)
+    timed_execution.timed_execution(largest_palindromic_product, digits)

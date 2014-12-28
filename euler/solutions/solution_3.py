@@ -70,11 +70,12 @@ def largest_prime_factor_improved(number):
             return candidate
 
 
-number = int(sys.argv[1])
+if __name__ == '__main__':
+    number = int(sys.argv[1])
 
-# Seconds to execute 1000 times when finding the largest factor of 13195: 1.23636722565
-# timed_execution.timed_execution(largest_prime_factor, number)
+    # Seconds to execute 1000 times when finding the largest factor of 13195: 1.23636722565
+    # timed_execution.timed_execution(largest_prime_factor, number)
 
-# Seconds to execute 1000 times when finding the largest factor of 13195: 0.00467586517334
-# Seconds to execute 1000 times when finding the largest factor of 600851475143: 0.826802968979 <- crazy!
-timed_execution.timed_execution(largest_prime_factor_improved, number)
+    # Seconds to execute 1000 times when finding the largest factor of 13195: 0.00467586517334
+    # Seconds to execute 1000 times when finding the largest factor of 600851475143: 0.826802968979 <- crazy!
+    timed_execution.timed_execution(largest_prime_factor_improved, number)

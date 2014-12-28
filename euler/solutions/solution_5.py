@@ -71,11 +71,12 @@ def smallest_multiple_improved(limit):
     return least_common_multiple
 
 
-limit = int(sys.argv[1])
+if __name__ == '__main__':
+    limit = int(sys.argv[1])
 
-# Seconds to execute 100 times when finding the LCM of 1 to 10: 0.187355995178
-# timed_execution.timed_execution(smallest_multiple, limit, loops=100)
+    # Seconds to execute 100 times when finding the LCM of 1 to 10: 0.187355995178
+    # timed_execution.timed_execution(smallest_multiple, limit, loops=100)
 
-# Seconds to execute 100 times when finding the LCM of 1 to 10: 0.00209903717041
-# Seconds to execute 100 times when finding the LCM of 1 to 20: 0.00543713569641 <- crazy!
-timed_execution.timed_execution(smallest_multiple_improved, limit, loops=100)
+    # Seconds to execute 100 times when finding the LCM of 1 to 10: 0.00209903717041
+    # Seconds to execute 100 times when finding the LCM of 1 to 20: 0.00543713569641 <- crazy!
+    timed_execution.timed_execution(smallest_multiple_improved, limit, loops=100)

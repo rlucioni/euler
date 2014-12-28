@@ -31,6 +31,7 @@ def sum_even_fibonaccis(limit):
     return even_fibonacci_sum
 
 
-limit = int(sys.argv[1])
+if __name__ == '__main__':
+    limit = int(sys.argv[1])
 
-timed_execution.timed_execution(sum_even_fibonaccis, limit)
+    timed_execution.timed_execution(sum_even_fibonaccis, limit)

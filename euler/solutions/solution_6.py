@@ -33,6 +33,7 @@ def sum_square_difference(ceiling):
     return sum_square_difference
 
 
-ceiling = int(sys.argv[1])
+if __name__ == '__main__':
+    ceiling = int(sys.argv[1])
 
-timed_execution.timed_execution(sum_square_difference, ceiling)
+    timed_execution.timed_execution(sum_square_difference, ceiling)
