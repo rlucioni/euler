@@ -3,12 +3,9 @@
 By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that
 the 6th prime is 13.
 
-What is the 10 001st prime number?
+What is the 10,001st prime number?
 """
-import sys
-import solution_5
-
-from ..utilities import timed_execution
+from euler.solutions import solution_5
 
 
 def find_nth_prime(n):
@@ -36,9 +33,3 @@ def find_nth_prime(n):
                 return candidate
 
         candidate += 1
-
-
-if __name__ == '__main__':
-    n = int(sys.argv[1])
-
-    timed_execution.timed_execution(find_nth_prime, n, loops=1)

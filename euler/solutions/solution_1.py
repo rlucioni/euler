@@ -5,16 +5,12 @@ If we list all the natural numbers below 10 that are multiples of 3 or 5, we get
 
 Find the sum of all the multiples of 3 or 5 below 1000.
 """
-import sys
-
-from ..utilities import timed_execution
-
 
 def sum_multiples(ceiling, *factors):
     """Find the sum of all multiples of the provided factors below the ceiling."""
     multiples = []
 
-    for number in xrange(ceiling):
+    for number in range(ceiling):
         for factor in factors:
             # Check if the current number is a multiple of the current factor.
             if number % factor == 0:
@@ -24,10 +20,3 @@ def sum_multiples(ceiling, *factors):
     multiple_sum = sum(set(multiples))
     
     return multiple_sum
-
-
-if __name__ == '__main__':
-    ceiling = int(sys.argv[1])
-    factors = [int(factor) for factor in sys.argv[2:]]
-
-    timed_execution.timed_execution(sum_multiples, ceiling, *factors)

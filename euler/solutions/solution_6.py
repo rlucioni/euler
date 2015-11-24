@@ -14,10 +14,6 @@ numbers and the square of the sum is 3025 − 385 = 2640.
 Find the difference between the sum of the squares of the first one hundred
 natural numbers and the square of the sum.
 """
-import sys
-
-from ..utilities import timed_execution
-
 
 def sum_square_difference(ceiling):
     """Compute the difference between the sum of squares and the square of
@@ -31,9 +27,3 @@ def sum_square_difference(ceiling):
     sum_square_difference = square_sum - sum_squares
 
     return sum_square_difference
-
-
-if __name__ == '__main__':
-    ceiling = int(sys.argv[1])
-
-    timed_execution.timed_execution(sum_square_difference, ceiling)

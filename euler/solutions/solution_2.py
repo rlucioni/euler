@@ -8,10 +8,6 @@ terms. By starting with 1 and 2, the first 10 terms will be:
 By considering the terms in the Fibonacci sequence whose values do not exceed
 four million, find the sum of the even-valued terms.
 """
-import sys
-
-from ..utilities import timed_execution
-
 
 def sum_even_fibonaccis(limit):
     """Find the sum of all even terms in the Fibonacci sequence whose values
@@ -29,9 +25,3 @@ def sum_even_fibonaccis(limit):
             even_fibonacci_sum += current
 
     return even_fibonacci_sum
-
-
-if __name__ == '__main__':
-    limit = int(sys.argv[1])
-
-    timed_execution.timed_execution(sum_even_fibonaccis, limit)

@@ -4,10 +4,6 @@ The prime factors of 13195 are 5, 7, 13 and 29.
 
 What is the largest prime factor of the number 600851475143?
 """
-import sys
-
-from ..utilities import timed_execution
-
 
 def sieve_of_eratosthenes(limit):
     """Find all prime numbers up to the given limit.
@@ -29,7 +25,7 @@ def sieve_of_eratosthenes(limit):
             # by starting enumeration from the square of the current candidate
             # instead of from the candidate itself, since all multiples of the
             # candidate below its square will already have been visited.
-            for multiple in xrange(candidate**2, limit, candidate):
+            for multiple in range(candidate**2, limit, candidate):
                 primality_flags[multiple] = False
 
 
@@ -38,6 +34,8 @@ def largest_prime_factor(number):
 
     This approach works, but the sieve generator starts running into
     space/memory constraints when given large numbers (like 600851475143).
+
+    Seconds to execute 1000 times when finding the largest factor of 13195: 1.23636722565.
     """
     primes = sieve_of_eratosthenes(number)
 
@@ -53,8 +51,12 @@ def largest_prime_factor(number):
 
 
 def largest_prime_factor_improved(number):
-    """Find the largest prime factor of the given number."""
-    for candidate in xrange(2, number):
+    """Find the largest prime factor of the given number.
+
+    Seconds to execute 1000 times when finding the largest factor of 13195: 0.00467586517334.
+    Seconds to execute 1000 times when finding the largest factor of 600851475143: 0.82680296897. Crazy!
+    """
+    for candidate in range(2, number):
         # Extract as many of the current factor as we can from
         # the number. This approach essentially applies Eratosthenes'
         # method inline! Since we start with 2, the first and smallest
@@ -68,14 +70,3 @@ def largest_prime_factor_improved(number):
         # Check if we've just divided by the largest prime.
         if number == 1:
             return candidate
-
-
-if __name__ == '__main__':
-    number = int(sys.argv[1])
-
-    # Seconds to execute 1000 times when finding the largest factor of 13195: 1.23636722565
-    # timed_execution.timed_execution(largest_prime_factor, number)
-
-    # Seconds to execute 1000 times when finding the largest factor of 13195: 0.00467586517334
-    # Seconds to execute 1000 times when finding the largest factor of 600851475143: 0.826802968979 <- crazy!
-    timed_execution.timed_execution(largest_prime_factor_improved, number)
