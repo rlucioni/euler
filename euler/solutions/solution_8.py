@@ -36,7 +36,7 @@ def greatest_adjacent_product(target, window):
         window (int): The number of adjacent digits to consider.
 
     Returns:
-        int, the greatest adjacent product.
+        int: The greatest adjacent product.
     """
     stringified = str(target)
     length = len(stringified)
