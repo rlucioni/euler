@@ -27,3 +27,33 @@ are 9 × 9 × 8 × 9 = 5832.
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest
 product. What is the value of this product?
 """
+
+def greatest_adjacent_product(target, window):
+    """Find the greatest product composed of adjacent digits in the target.
+
+    Arguments:
+        target (int): A target number whose digits should be searched.
+        window (int): The number of adjacent digits to consider.
+
+    Returns:
+        int, the greatest adjacent product.
+    """
+    stringified = str(target)
+    length = len(stringified)
+    greatest_product = None
+
+    for i in range(length):
+        digits = stringified[i:i+window]
+
+        # Stop if we've reached the end of the target.
+        if len(digits) < window:
+            break
+
+        product = int(digits[0])
+        for digit in digits[1:]:
+            product *= int(digit)
+
+        if greatest_product is None or product > greatest_product:
+            greatest_product = product
+
+    return greatest_product
