@@ -27,6 +27,8 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 """
+from euler.utils import product
+
 
 GRID = '''
     08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
@@ -80,23 +82,6 @@ def construct_grid(string_grid):
                 continue
 
     return grid
-
-
-# TODO: Move to a utility module.
-def product(iterable):
-    """Compute the product.
-
-    Arguments:
-        iterable (iterable of int): Numbers to multiply together.
-
-    Returns:
-        int: The product of all numbers contained in the iterable.
-    """
-    product = iterable[0]
-    for number in iterable[1:]:
-        product *= number
-
-    return product
 
 
 def is_greater(numbers, adjacent, greatest_product):
