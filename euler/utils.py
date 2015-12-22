@@ -1,4 +1,5 @@
 """Utilities for Project Euler solutions."""
+import math
 import timeit
 
 
@@ -43,3 +44,18 @@ def product(iterable):
         product *= number
 
     return product
+
+
+def choose(n, k):
+    """Compute the binomial coefficient.
+
+    Uses // operator to force integer division.
+
+    Arguments:
+        n (int): Possibilities.
+        k (int): Unordered outcomes.
+
+    Returns:
+        int, the binomial coefficient.
+    """
+    return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
