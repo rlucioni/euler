@@ -17,3 +17,38 @@ Which starting number, under one million, produces the longest chain?
 
 Note: Once the chain starts, the terms are allowed to go above one million.
 """
+
+def collatz_sequence(n):
+    length = 1
+
+    # Implementing this recursively would allow memoization, but Python isn't
+    # the best language to attempt this in. Doing so causes a RecursionError
+    # to be raised. Also of note: using a decorator like `functools.lru_cache`
+    # for memoization causes the recursion limit to be reached more quickly.
+    # See: http://stackoverflow.com/questions/15239123/maximum-recursion-depth-reached-faster-when-using-functools-lru-cache.
+    while n > 1:
+        length += 1
+
+        if n%2 == 0:
+            n /= 2
+        else:
+            n = (3 * n) + 1
+
+    return length
+
+
+def longest_collatz_sequence(ceiling):
+    longest_chain = {
+        'number': 1,
+        'length': 1
+    }
+
+    for i in range(ceiling):
+        length = collatz_sequence(i)
+        if length > longest_chain['length']:
+            longest_chain = {
+                'number': i,
+                'length': length
+            }
+
+    return longest_chain
