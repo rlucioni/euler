@@ -68,6 +68,6 @@ def deserialize_grid(serialized):
         serialized (str): Serialized representation of a grid of integers.
 
     Returns:
-        list of map objects, each yielding ints
+        list of lists of ints
     """
-    return [map(int, row.split()) for row in serialized.split('\n') if row]
+    return [list(map(int, row.split())) for row in serialized.split('\n') if row]

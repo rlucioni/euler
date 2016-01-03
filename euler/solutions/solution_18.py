@@ -60,3 +60,42 @@ LARGE_TRIANGLE = '''
     63 66 04 68 89 53 67 30 73 16 69 87 40 31
     04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 '''
+
+
+def max_path_sum(serialized):
+    """Find the max path sum of the serialized triangle.
+
+    Arguments:
+        serialized (str): Serialized representation of a triangle of integers.
+
+    Returns:
+        int: Maximum path sum.
+    """
+    triangle = utils.deserialize_grid(serialized)
+    triangle_base_length = len(triangle[-1])
+    cache = [[] for row in triangle]
+
+    for row_index, cache_row in enumerate(cache):
+        diagonal = []
+        for triangle_row_index in range(row_index, triangle_base_length):
+            diagonal.append(triangle[triangle_row_index].pop())
+
+        for column_index, element in enumerate(diagonal):
+            try:
+                left = cache_row[column_index - 1]
+            except IndexError:
+                left = None
+
+            try:
+                upper = cache[row_index - 1][column_index]
+            except IndexError:
+                upper = None
+
+            if left and upper:
+                cache_row.append(max(left, upper) + element)
+            elif left or upper:
+                cache_row.append((left or upper) + element)
+            else:
+                cache_row.append(element)
+
+    return max([row[-1] for row in cache])

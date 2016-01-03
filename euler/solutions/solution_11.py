@@ -85,7 +85,7 @@ def search_grid(serialized, adjacent):
         int: Greatest product of adjacent numbers.
     """
     greatest_product = None
-    grid = [list(row) for row in utils.deserialize_grid(serialized)]
+    grid = utils.deserialize_grid(serialized)
 
     # We only need to search right, down, and diagonally (upper right and 
     # lower right) as we visit each element to traverse the entire grid.
