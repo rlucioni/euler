@@ -59,3 +59,15 @@ def choose(n, k):
         int, the binomial coefficient.
     """
     return math.factorial(n) // (math.factorial(k) * math.factorial(n - k))
+
+
+def deserialize_grid(serialized):
+    """Deserialize a serialized grid.
+
+    Arguments:
+        serialized (str): Serialized representation of a grid of integers.
+
+    Returns:
+        list of map objects, each yielding ints
+    """
+    return [map(int, row.split()) for row in serialized.split('\n') if row]

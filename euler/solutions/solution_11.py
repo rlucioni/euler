@@ -27,7 +27,7 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
 """
-from euler.utils import product
+from euler import utils
 
 
 GRID = '''
@@ -54,36 +54,6 @@ GRID = '''
 '''
 
 
-def construct_grid(string_grid):
-    """Construct a list of lists representing a grid of integers.
-
-    Arguments:
-        string_grid (str): The string representation of the grid, complete with newlines.
-
-    Returns:
-        list of list of int: Representing a grid of integers.
-    """
-    raw_rows = string_grid.split('\n')
-
-    rows = []
-    for row in raw_rows:
-        if row:
-            rows.append(row)
-
-    grid = []
-    for row_index, row in enumerate(rows):
-        elements = row.split()
-        grid.append([])
-
-        for element in elements:
-            try:
-                grid[row_index].append(int(element))
-            except:
-                continue
-
-    return grid
-
-
 def is_greater(numbers, adjacent, greatest_product):
     """Check if the product of the given numbers is greater than the greatest product.
 
@@ -98,23 +68,24 @@ def is_greater(numbers, adjacent, greatest_product):
         None: Otherwise.
     """
     if len(numbers) == adjacent:
-        current_product = product(numbers)
+        current_product = utils.product(numbers)
         if greatest_product is None or current_product > greatest_product:
             return current_product
 
 
 # TODO: This could be more cleanly implemented as a class.
-def search_grid(grid, adjacent):
+def search_grid(serialized, adjacent):
     """Search a grid for the greatest product of adjacent numbers.
 
     Arguments:
-        grid (list of list of int): Representation of the grid to search.
+        serialized (str): Serialized representation of a grid of integers.
         adjacent (int): How many adjacent numbers to consider.
 
     Returns:
         int: Greatest product of adjacent numbers.
     """
     greatest_product = None
+    grid = [list(row) for row in utils.deserialize_grid(serialized)]
 
     # We only need to search right, down, and diagonally (upper right and 
     # lower right) as we visit each element to traverse the entire grid.
