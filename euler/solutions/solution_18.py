@@ -76,11 +76,13 @@ def max_path_sum(serialized):
     cache = [[] for row in triangle]
 
     for row_index, cache_row in enumerate(cache):
-        diagonal = []
         for triangle_row_index in range(row_index, triangle_base_length):
-            diagonal.append(triangle[triangle_row_index].pop())
+            element = triangle[triangle_row_index].pop()
 
-        for column_index, element in enumerate(diagonal):
+            # Number of elements remaining in the popped triangle row
+            # corresponds to cache column index.
+            column_index = len(triangle[triangle_row_index])
+
             try:
                 left = cache_row[column_index - 1]
             except IndexError:
