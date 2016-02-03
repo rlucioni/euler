@@ -13,3 +13,25 @@ You are given the following information, but you may prefer to do some research 
 
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
 """
+import calendar
+
+
+MONTHS = 12
+SUNDAY = 6
+
+
+def get_first_sundays(low_year, high_year):
+    """
+    Find the number of Sundays falling on the first of the month between low_year
+    and high_year, inclusive.
+    """
+    first_sundays = 0
+
+    for year in range(low_year, high_year + 1):
+        for month in range(1, MONTHS + 1):
+            first_day, _ = calendar.monthrange(year, month)
+
+            if first_day == SUNDAY:
+                first_sundays += 1
+
+    return first_sundays
