@@ -22,6 +22,7 @@ def timed_execution(function, *args, loops=1000, **kwargs):
     """
     print("Solution: {solution}".format(solution=function(*args, **kwargs)))
 
+    # TODO: Use functools.partial.
     wrapped = _timing_wrapper(function, *args, **kwargs)
     execution_time = timeit.timeit(wrapped, number=loops)
     print("Seconds to execute {loops} times: {execution_time}".format(
